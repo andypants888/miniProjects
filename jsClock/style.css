@@ -1,7 +1,94 @@
-body {
-    background-color: rgb(59, 59, 59);
+*, *::after, *::before {
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-h1 {
-    color: red;
+body {
+    background-image: linear-gradient(to right, rgb(255, 255, 255), red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.clock {
+    width: 300px;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.877);
+    border-radius: 50%;
+    border: solid rgb(0, 0, 0);
+    color: rgb(20, 102, 0);
+    position: relative;
+}
+
+.clock .number {
+    --rotation: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgb(0, 238, 255); */
+    text-align: center;
+    transform: rotate(var(--rotation));
+    font-size: 35px;
+}
+
+.clock .number1 { --rotation: 30deg; }
+.clock .number2 { --rotation: 60deg; }
+.clock .number3 { --rotation: 90deg; }
+.clock .number4 { --rotation: 120deg; }
+.clock .number5 { --rotation: 150deg; }
+.clock .number6 { --rotation: 180deg; }
+.clock .number7 { --rotation: 210deg; }
+.clock .number8 { --rotation: 240deg; }
+.clock .number9 { --rotation: 270deg; }
+.clock .number10 { --rotation: 300deg; }
+.clock .number11 { --rotation: 330deg; }
+
+.clock .hand {
+    --rotation: 120;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    border: 1px solid white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    /* need to understand rotate(calc(var(--rotation) ) here */  
+    transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+    transform-origin: bottom;
+    z-index: 10;
+}
+
+.clock::after {
+    content: '';
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    z-index: 15;
+    background-color: rgb(20, 102, 0);
+    /* transform: translateX(-50%) translateY(+50%); */
+    transform: translate(-50%, +50%);
+    transform-origin: bottom;
+
+}
+
+.clock .hand.hour {
+    width: 1px;
+    height: 40%;
+    background-color: rgb(20, 102, 0);
+}
+
+.clock .hand.minute {
+    width: 6px;
+    height: 50%;
+    background-color: rgb(20, 102, 0);
+}
+
+.clock .hand.second {
+    width: 3px;
+    height: 50%;
+    background-color: rgb(20, 102, 0);
 }

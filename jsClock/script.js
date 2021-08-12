@@ -1,2 +1,2 @@
 "use strict"
-alert('hi')
+alert('What time is it?')
